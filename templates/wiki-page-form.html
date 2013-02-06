@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/static/main.css" />
+
+  <title>Udacity wiki</title>
+</head>
+
+<body>
+  <h1><a href="/" id="main-title">Udacity</a></h1>
+
+  <div id="user">
+    {% if user %}
+      {{user.name}} (<a class="login-link" href="/logout">logout</a>)
+    {% else %}
+      <a href="/login">login</a>
+      |
+      <a href="/signup">signup</a>
+    {% endif %}
+  </div>
+
+  <div id="content">
+    <form method="post">
+      <label>
+        <textarea name="content">{{content}}</textarea>
+      </label>
+      <div class="error">{{error}}</div>
+
+      <input type="submit">
+    </form>
+  </div>
+
+</body>
+
+</html>
