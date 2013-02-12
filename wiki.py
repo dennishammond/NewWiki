@@ -22,12 +22,10 @@ class Page(db.Model):
  class Entry(db.Model):
     page = db.ReferenceProperty(Page, collection_name='versions')
     content = db.TextProperty(required = True)
-    # author = db.ReferenceProperty(User, required = True)
     timestamp = db.DateTimeProperty(auto_now_add = True)
 
     @classmethod
     def submit(cls, location, content):
-
         return Entry(page = location, content = content)
 
 
@@ -91,25 +89,6 @@ class User(db.Model):
 
             self.login(u)
             self.redirect('/signup')
-
-## Wiki
-
-class Page(db.Model):
-    location = db.TextProperty(required = True)
-    
-    
-class Entry(db.Model):
-    page = db.ReferenceProperty(Page, collection_name='versions')
-    content = db.TextProperty(required = True)
-    timestamp = db.DateTimeProperty(auto_now_add = True)
-
-    @classmethod
-    def submit(cls, location, content):
-        return Entry(page = location, content = content)
-
-    @classmethod
-    def get_history(cls, location):
-        pass
 
 # User stuff
 
